@@ -49,6 +49,45 @@ This is a web application that allows users to track their investments. Users ca
   - Track the greeks for options.
   - Track corrolations between the greeks in positive P/L and negative P/L trades.
 
+## Applications and Models
+
+- PLTracker (p_l_tracker)
+  - `User`
+  - `Portfolio`
+    - `user`: ForeignKey to User
+    - `name`: CharField
+    - `description`: TextField
+    - `created_at`: DateTimeField
+    - `updated_at`: DateTimeField
+    - `option_contracts`: ManyToManyField to `OptionContract`
+  - `OptionContract`
+    - `portfolio`: ForeignKey to `Portfolio`
+    - `symbol`: CharField
+    - `option_type`: CharField with choices `CALL` and `PUT` and `BOTH`
+    - `experation_date`: DateField
+    - `strike_price`: DecimalField
+    - `contract_size`: IntegerField
+    - `premium`: DecimalField
+    - `position_type`: CharField with choices `LONG`, `SHORT`, and `BOTH`
+  - `Trade`
+    - `option_contract`: ForeignKey to `OptionContract`
+    - `portfolio`: ForeignKey to Portfolio
+    - Greeks Values
+      - Delta
+      - Gamma
+      - Theta
+      - Vega
+      - Rho
+    - Implied Volatility
+  - Stock
+  - ETF
+  - Currency
+  - Position
+    - Stock, Option, Currency, ETF, etc.
+  - Trade
+- Portfolio
+  - PortfolioPosition
+
 ## Known Issues and Areas for Improvement
 
 ## Setup and Installation
