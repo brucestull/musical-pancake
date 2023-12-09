@@ -64,7 +64,7 @@ This is a web application that allows users to track their investments. Users ca
     - `portfolio`: ForeignKey to `Portfolio`
     - `symbol`: CharField
     - `option_type`: CharField with choices `CALL` and `PUT` and `BOTH`
-    - `experation_date`: DateField
+    - `expiration_date`: DateField
     - `strike_price`: DecimalField
     - `contract_size`: IntegerField
     - `premium`: DecimalField
